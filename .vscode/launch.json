@@ -1,0 +1,24 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(Windows) Launch",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceRoot}/target/debug/grrs.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceRoot}",
+            "environment": [],
+            "externalConsole": true
+        },
+        {
+            "name": "(OSX) Launch",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceRoot}/target/debug/grrs",
+            "args": ["~/Pictures/2021-12-20_12-51_1.png"],
+            "cwd": "${workspaceRoot}"
+        }
+    ]
+}
