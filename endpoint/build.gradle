@@ -1,35 +1,36 @@
 plugins {
     id "com.microsoft.azure.azurefunctions" version "1.10.0"
+    id "io.freefair.lombok" version "6.6-rc1"
 }
 apply plugin: "java"
+apply plugin: "com.microsoft.azure.azurefunctions"
 
 group 'dev.patrykferenc'
 version '1.0.0-SNAPSHOT'
 
 dependencies {
     implementation 'com.microsoft.azure.functions:azure-functions-java-library:2.0.1'
+    implementation 'com.azure:azure-cognitiveservices-customvision-prediction:1.1.0-preview.2'
     testImplementation 'org.mockito:mockito-core:2.23.4'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.4.2'
 }
 
-sourceCompatibility = '1.8'
-targetCompatibility = '1.8'
+sourceCompatibility = '11'
+targetCompatibility = '11'
 
 repositories {
     mavenCentral()
 }
 
 azurefunctions {
-    // subscription = '<your subscription id>'
-    resourceGroup = 'java-functions-group'
-    appName = 'urban-foraging-endpoint-1669463586322' // please rename the function name
-    pricingTier = 'Consumption' // refers https://github.com/microsoft/azure-maven-plugins/tree/develop/azure-functions-maven-plugin#supported-pricing-tiers for all valid values
+    subscription = 'caf905d9-a6e1-4f78-8144-b443825538f2'
+    resourceGroup = 'urban-foraging-app'
+    appName = 'urban-foraging-endpoint' // please rename the function name
+    pricingTier = 'Consumption'
     region = 'westus'
     runtime {
-      os = 'windows'
+        os = 'linux'
+        javaVersion = '11'
     }
-    // appSettings {
-    //    key = 'value'
-    // }
-    // localDebug = "transport=dt_socket,server=y,suspend=n,address=5005"
+    localDebug = "transport=dt_socket,server=y,suspend=n,address=5005"
 }
