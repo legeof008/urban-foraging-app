@@ -1,17 +1,32 @@
-# Cli urban foraging app tool
-This tool was designed to acess an endpoint of urban-foraging-app API through a command line interface.
-## Dependencies and setup
-Please visit [this webside](https://rustup.rs) and follow the instructions.
-After that enter the `/cli-tool` directory and run:
+# Urban foraging app
+## Description
+This app was designed to help recognise if a picture of a plant matches description of a plant tagged by the Custom Vision Azure service.
+## Technology stack
+Azure services:
+ - Azure Custom Viion
+ - Azure Virtual Network
+ - Azure Function App
+
+Native apps:
+- cli tool
+## Usage
+### Building tool
+To build the application please run from the project root:
 ```terminal
-cargo run
-``` 
-In order to build version with debugging enabled:
-```terminal
-cargo build
+cd cli-tool && \
+cargo build --release && \
+mv cli-tool/target/release/urban-foraging-clli .
 ```
-In order to build version optimized for release:
+### Running the tool
+In order to upload image file of a plant you wish recognised use:
 ```terminal
-cargo build --release
+urban-foraging-cli <path to image file>
 ```
-The compiled file should be present at `/cli-tool/target/debug` or `/cli-tool/target/release`
+The expected response should be:
+```json
+{
+	"plantName": "<plant name>",
+	"description": "<description>",
+	"certaintyPercentage": <percentage>
+}
+```

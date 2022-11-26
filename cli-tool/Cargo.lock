@@ -117,16 +117,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "cli_tool"
-version = "0.1.0"
-dependencies = [
- "clap",
- "image",
- "infer",
- "reqwest",
-]
-
-[[package]]
 name = "color_quant"
 version = "1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1243,6 +1233,16 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5c5713f0fc4b5db668a2ac63cdb7bb4469d8c9fed047b1d0292cc7b0ce2ba921"
 dependencies = [
  "tinyvec",
+]
+
+[[package]]
+name = "urban-foraging-cli"
+version = "0.1.0"
+dependencies = [
+ "clap",
+ "image",
+ "infer",
+ "reqwest",
 ]
 
 [[package]]
