@@ -11,7 +11,7 @@ Native apps:
 - cli tool
 ## Usage
 ### Building tool
-To build the application please run from the project root:
+For more specific information on the building process see the cli-tool/README.md. To build the application please run from the project root:
 ```terminal
 cd cli-tool && \
 cargo build --release && \
