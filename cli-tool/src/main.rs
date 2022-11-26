@@ -2,7 +2,7 @@
 use clap::Parser;
 use core::panic;
 use std::error::Error;
-use reqwest::blocking::Client;
+use reqwest::{blocking::Client, header::CONTENT_TYPE};
 use std::fs::File;
 use infer;
 
@@ -12,7 +12,8 @@ struct CliArgs {
 }
 fn send_request_to_endpoint(file: File) -> Result<(), Box<dyn Error>> {
     let client = Client::new();
-    let resp = client.post("https://our_endpoint_url").body(file).send()?;
+    let resp = client.post("https://our_endpoint_url").header(CONTENT_TYPE,"application/octet-stream")
+    .body(file).send()?;
     println!("{:#?}", resp);
     Ok(())
 }
