@@ -5,5 +5,5 @@ import dev.patrykferenc.urban.foraging.endpoint.prediction.PredictionImage;
 
 public interface EdieblePlantImagePredictor {
 
-    EdiblePlantResponseDTO predictEdieblePlantFromImage(PredictionImage image);
+    EdiblePlantResponseDTO predictEdiblePlantFromImage(PredictionImage image);
 }

@@ -8,8 +8,8 @@ import com.microsoft.azure.functions.HttpStatus;
 import com.microsoft.azure.functions.annotation.AuthorizationLevel;
 import com.microsoft.azure.functions.annotation.FunctionName;
 import com.microsoft.azure.functions.annotation.HttpTrigger;
-import dev.patrykferenc.urban.foraging.endpoint.prediction.predictor.EdiblePlantPredictorFactory;
 import dev.patrykferenc.urban.foraging.endpoint.prediction.PredictionImage;
+import dev.patrykferenc.urban.foraging.endpoint.prediction.predictor.EdiblePlantPredictorFactory;
 
 import java.util.Optional;
 
@@ -19,7 +19,7 @@ public class UrbanForagingEndpointFunction {
     @FunctionName("predict")
     public HttpResponseMessage uploadImageAndGetResultsOfCheck(
             @HttpTrigger(
-                    name = "req",
+                    name = "request",
                     methods = {HttpMethod.POST},
                     authLevel = AuthorizationLevel.ANONYMOUS,
                     dataType = "binary")
@@ -38,7 +38,7 @@ public class UrbanForagingEndpointFunction {
 
         final var predictor = EdiblePlantPredictorFactory.getPredictor();
 
-        final var prediction = predictor.predictEdieblePlantFromImage(imageToPredict);
+        final var prediction = predictor.predictEdiblePlantFromImage(imageToPredict);
 
         return request.createResponseBuilder(HttpStatus.OK).body(prediction).build();
     }

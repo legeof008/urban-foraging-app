@@ -12,13 +12,12 @@ public class EdiblePlantPredictorFactory {
     public static EdieblePlantImagePredictor getPredictor() {
         final var customVisionClient = getCustomVisionClient();
 
-        return new CustomVisionEdieblePlantPredictor(customVisionClient);
+        return new CustomVisionEdiblePlantPredictor(customVisionClient);
     }
 
     private static CustomVisionPredictionClient getCustomVisionClient() {
         return CustomVisionPredictionManager
-                .authenticate(CustomVisionProjectConfiguration.PREDICTION_KEY)
-                .withEndpoint(CustomVisionProjectConfiguration.PREDICTION_ENDPOINT);
+                .authenticate(CustomVisionProjectConfiguration.PREDICTION_ENDPOINT, CustomVisionProjectConfiguration.PREDICTION_KEY).withEndpoint(CustomVisionProjectConfiguration.PREDICTION_ENDPOINT);
     }
 
 }
