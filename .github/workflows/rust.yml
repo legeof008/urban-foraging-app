@@ -1,0 +1,33 @@
+name: Rust
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Install windows dependency
+      run: sudo apt-get install mingw-w64 && rustup target add x86_64-pc-windows-gnu
+    - uses: actions/checkout@v3
+    - name: Build for linux
+      run: cd cli-tool && cargo build --release
+    - name: Build for windows
+      run: cd cli-tool && cargo build --target x86_64-pc-windows-gnu
+    - name: Upload linux artifact
+      uses: actions/upload-artifact@v3.1.1
+      with:
+        name: cli-tool-linux
+        path: /home/runner/work/urban-foraging-app/urban-foraging-app/cli-tool/target/release/urban-foraging-cli
+    - name: Upload linux artifact
+      uses: actions/upload-artifact@v3.1.1
+      with:
+        name: cli-tool-linux
+        path: /home/runner/work/urban-foraging-app/urban-foraging-app/cli-tool/target/x86_64-pc-windows-gnu/release/urban-foraging-cli.exe
