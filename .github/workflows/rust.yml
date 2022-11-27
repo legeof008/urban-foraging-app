@@ -20,13 +20,13 @@ jobs:
     - name: Build for linux
       run: cd cli-tool && cargo build --release
     - name: Build for windows
-      run: cd cli-tool && cargo build --target x86_64-pc-windows-gnu && ls -R target
+      run: cd cli-tool && cargo build --target x86_64-pc-windows-gnu --release && ls -R target
     - name: Upload linux artifact
       uses: actions/upload-artifact@v3.1.1
       with:
         name: cli-tool-linux
         path: /home/runner/work/urban-foraging-app/urban-foraging-app/cli-tool/target/release/urban-foraging-cli
-    - name: Upload linux artifact
+    - name: Upload windows artifact
       uses: actions/upload-artifact@v3.1.1
       with:
         name: cli-tool-win
