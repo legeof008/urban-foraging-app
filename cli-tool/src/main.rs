@@ -25,7 +25,7 @@ fn check_if_file_is_an_accepted_image_type(filepath: &std::path::PathBuf) -> boo
     let kind = infer::get_from_path(filepath)
         .expect("file read succesfully")
         .expect("file type unknown");
-    if kind.extension().eq("jpg") || kind.extension().eq("png") {
+    if kind.extension().eq("jpg") || kind.extension().eq("png") || kind.extension().eq("bmp") {
         return true;
     } else {
         println!("Wrong image/file type !");
@@ -41,7 +41,7 @@ fn main() {
 
     let image = File::open(&command_line_argument.filepath).unwrap();
     let endpoint_url =
-        Url::parse("https://urban-foraging-endpoint.azurewebsites.net/api/predict").unwrap();
+        Url::parse("https://urban-foraging-api.azure-api.net/predict").unwrap();
     let prediction_results = send_request_to_endpoint(endpoint_url, image);
 
     match prediction_results {
