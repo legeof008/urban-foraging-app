@@ -15,12 +15,12 @@ jobs:
     
     steps:
     - name: Install windows dependency
-      run: sudo apt-get install mingw-w64 && rustup target add x86_64-pc-windows-gnu && ls -R target
+      run: sudo apt-get install mingw-w64 && rustup target add x86_64-pc-windows-gnu 
     - uses: actions/checkout@v3
     - name: Build for linux
       run: cd cli-tool && cargo build --release
     - name: Build for windows
-      run: cd cli-tool && cargo build --target x86_64-pc-windows-gnu && ls
+      run: cd cli-tool && cargo build --target x86_64-pc-windows-gnu && ls -R target
     - name: Upload linux artifact
       uses: actions/upload-artifact@v3.1.1
       with:
