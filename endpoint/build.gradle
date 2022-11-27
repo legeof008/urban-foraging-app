@@ -23,7 +23,7 @@ repositories {
 }
 
 azurefunctions {
-    subscription = 'caf905d9-a6e1-4f78-8144-b443825538f2'
+    subscription = System.getenv("AZURE_SUBSCRIPTION_ID")
     resourceGroup = 'urban-foraging-app'
     appName = 'urban-foraging-endpoint' // please rename the function name
     pricingTier = 'Consumption'

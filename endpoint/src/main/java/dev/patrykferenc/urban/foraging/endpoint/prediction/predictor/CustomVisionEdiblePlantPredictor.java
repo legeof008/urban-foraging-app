@@ -28,7 +28,15 @@ class CustomVisionEdiblePlantPredictor implements EdieblePlantImagePredictor {
         return EdiblePlantResponseDTO.builder()
                 .plantName(prediction.tagName())
                 .certaintyPercentage(prediction.probability() * 100)
-                .description("TODO: Add description")
+                .description(getDescriptionBasedOnProbability(prediction.probability()))
                 .build();
+    }
+
+    private static String getDescriptionBasedOnProbability(double probability) {
+        if (probability < 0.5) {
+            return "This plant is not edible or there is not enough certainty to make a good prediction.";
+        }
+
+        return "This plant is edible";
     }
 }
